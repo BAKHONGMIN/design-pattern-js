@@ -17,12 +17,12 @@ const Task = class extends Set {
         this._title = title;
     }
     add(task) {
-        if(!is(task, Task)) e('Invalid Type!');
+        if(!is(task, Task)) e('Invalid Type.');
         super.add(task);
         return this;
     } 
     getTask(task) {
-        return this.has(task) ? [...this].filter(t => t===task)[0] : e(`"${task._title}" is not existed`);
+        return this.has(task) ? [...this].filter(t => t===task)[0] : e(`"${task._title}" is not existed.`);
     }
     static reStore(tasks) {
         tasks = typeof tasks === 'string' ? JSON.parse(tasks) : tasks;
