@@ -54,9 +54,6 @@ console.log(store); //{"_title":"studying","list":[{"_title":"cs","list":[{"_tit
 console.log(Task.reStore(store));
 
 /** Explaination
- * Task가 Set를 상속받은 이유.
- *    Task가 하위에 list를 가지고 있는 객체이기 보다는 할일들의 리스트 그 자체이기 때문.
- * 
  * memento 패턴은 자신의 상태값을 저장하고 복원하는 방식을 일컫는다.
  * 이 패턴은 대게 혼자 쓰이지 않고 command패턴과 같이 쓰인다. command패턴에서 각 command를 execute한후 undo할때 쓰이기 좋다.
  * reStore와 같은 재귀적인 처리를 composit 패턴으로 볼 수 있다.
