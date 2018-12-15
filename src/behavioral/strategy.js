@@ -24,7 +24,7 @@ class Character {
 }
 
 class Weapon {
-    attack(){e('must be overried.');}
+    attack(){e('must be override.');}
 }
 class Hands extends Weapon {
     attack(){console.log('손으로 공격');}
