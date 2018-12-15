@@ -16,7 +16,6 @@ module.exports = {
             "warn",
             "single"
         ],
-        "indent": ["warn", 4],
         "semi": 2,
         "no-unused-vars": 1,
         "no-console": "off"
