@@ -57,7 +57,7 @@ class Component {
     search(name) {
         return this._search(name);
     }
-    _search() {e('must be overrieded');}
+    _search() {e('must be overrided');}
 }
 
 class Folder extends Component {
