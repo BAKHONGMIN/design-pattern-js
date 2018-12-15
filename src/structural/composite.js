@@ -18,8 +18,8 @@ class Component {
     explore() {
         return this._explore();
     }
-    _explore() {e('must be overrieded');}
-    _search() {e('must be overrieded');}
+    _explore() {e('must be overrided');}
+    _search() {e('must be overrided');}
 }
 
 class Folder extends Component {
