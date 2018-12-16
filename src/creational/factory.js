@@ -1,5 +1,5 @@
 import utils from '../utils/index';
-const {log: {e}, checker:{is, staticIs}} = utils;
+const {log: {e, log}, checker:{is, staticIs}} = utils;
 
 /**Assuming
  * ui컴포넌트들을 각 패턴에 맞게 생성한다.
@@ -9,10 +9,10 @@ const {log: {e}, checker:{is, staticIs}} = utils;
 class Element{appendChild(){}}
 class Button{}
 class TextArea{}
-const WinButton=class extends Button{constructor(){super();console.log('create winbutton')}};
-const WinTextArea=class extends TextArea{constructor(){super();console.log('create wintextarea')}};
-const MacButton=class extends Button{constructor(){super();console.log('create macbutton')}};
-const MacTextArea=class extends TextArea{constructor(){super();console.log('create mactextarea')}};
+const WinButton=class extends Button{constructor(){super();log('create winbutton')}};
+const WinTextArea=class extends TextArea{constructor(){super();log('create wintextarea')}};
+const MacButton=class extends Button{constructor(){super();log('create macbutton')}};
+const MacTextArea=class extends TextArea{constructor(){super();log('create mactextarea')}};
 
 //------------simple factory----------------
 class ButtonDirectory extends Array {
@@ -31,7 +31,7 @@ const buttonDirectory = new ButtonDirectory();
 buttonDirectory.add(Button);
 buttonDirectory.add(WinButton);
 buttonDirectory.add(MacButton);
-console.log(buttonDirectory.get(MacButton));
+log(buttonDirectory.get(MacButton));
 
 //------------absctract factory----------------
 {
@@ -55,7 +55,7 @@ class Renderer {
         target.appendChild(this.factory.getButton());
     }
     setFactory(uiFactor) {
-        if(!is(uiFactor, UIFactory)) e('invalid type')
+        if(!is(uiFactor, UIFactory)) e('invalid type');
         this.factory = uiFactor;
     }
 }
@@ -74,7 +74,7 @@ class ShadowingBox {
         button.style = 'box-shadow: 5px 10px #888888';
         return button;
     }
-    _getButton() {e('overrid')}
+    _getButton() {e('overrid');}
 }
 class WinShadowingBox extends ShadowingBox {
     _getButton() {return buttonDirectory.get(WinButton);}
@@ -82,7 +82,7 @@ class WinShadowingBox extends ShadowingBox {
 class MacShadowingBox extends ShadowingBox {
     _getButton() {return buttonDirectory.get(MacButton);}
 }
-console.log(new WinShadowingBox().draw());
+log(new WinShadowingBox().draw());
 }
 
 

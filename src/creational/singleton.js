@@ -1,5 +1,5 @@
 import utils from '../utils/index';
-const {log: {e}, checker:{is}} = utils;
+const {log: {e, log}} = utils;
 
 {
     const SingleInstance = (()=>{
@@ -17,7 +17,7 @@ const {log: {e}, checker:{is}} = utils;
 
     const p1 = SingleInstance.getinstance();
     const p2 = SingleInstance.getinstance();
-    console.log(p1 === p2);
+    log(p1 === p2);
     //const p3 = new SingleInstance(); error
 } 
 
@@ -32,7 +32,7 @@ const {log: {e}, checker:{is}} = utils;
 
     const p1 = new SingleInstance();
     const p2 = new SingleInstance();
-    console.log(p1 === p2);
+    log(p1 === p2);
 }
 
 /** Explaination

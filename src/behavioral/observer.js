@@ -1,22 +1,23 @@
 import utils from '../utils/index';
-const {log: {e}, checker:{is}} = utils;
+const {log: {e, log}, checker:{is}} = utils;
 
 /**Assuming
  * mvc패턴의 형태로 view: display, controller: bankapp, model: account의 구조로 작성하고 
  * model의 변화를 controller가 observing하고 있다가 model에 변화가 생기면 controller가 view를 갱신해준다.
  */
 
-class Observer {listen(){e('override');}};
+class Observer {listen(){e('override');}}
 class Observable {
     constructor() {
         this._listener = new Set();
     }
     _notify(data) {this._listener.forEach(o=>o.listen(data));}
     addListener(listener) {
-        if(is(listener, Observer)) e('override');
+        if(!is(listener, Observer)) e('override');
         this._listener.add(listener);
     }
 }
+//Model
 class Account extends Observable {
     constructor() {
         super();
@@ -32,6 +33,7 @@ class Account extends Observable {
         return this._balance;
     }
 }
+//Controller
 class BankApp extends Observer {
     constructor(account, display) {
         super();
@@ -49,9 +51,10 @@ class BankApp extends Observer {
         display.print(amount);
     }
 }
+//View
 class Display {
     print(data) {
-        console.log(data);
+        log(data);
     }
 }
 

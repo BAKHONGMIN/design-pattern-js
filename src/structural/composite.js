@@ -1,12 +1,18 @@
 import utils from '../utils/index';
-const {log: {e}, checker:{is}} = utils;
+const {log: {e, log}, checker:{is}} = utils;
 
 /**Assuming
  * 폴더와 파일들이 있고 전체를 순회하여 전체 구조의 오브젝트를 반환하는 객체를 만든다.
  * 각 type별 object: {type:folder, name:root, children:[]}, {type:file, name:log.txt}
+ * -Root
+ *      -Music
+ *          -Shape of You
+ *          -Billie Jean
+ *      -Muvie
+ *          -TaiTanic
  */
 
-
+//Abstraction Class of Folder and File
 class Component {
     constructor(name, type) {
         this._name = name;
@@ -37,7 +43,7 @@ class Folder extends Component {
             type: this._type,
             name: this._name,
             child: this._child.map(v=>v.explore())
-        }
+        };
     }
     _search(name) {
         const child = this._child.reduce((arr, c)=>{
@@ -51,6 +57,13 @@ class Folder extends Component {
             child: child
         } : false;
     }
+    getInfo() {
+        return  {
+            type: this._type,
+            name: this._name,
+            child: []
+        };
+    }
 }
 
 class File extends Component {
@@ -61,7 +74,7 @@ class File extends Component {
         return {
             type: this._type,
             name: this._name
-        }
+        };
     }
     _search(name) {
         return name === this._name ? {
@@ -71,8 +84,11 @@ class File extends Component {
     }
 }
 
-
-
+//logger
+const print = (component, indent='') => {
+    log(`${indent}${component.type}: ${component.name}`);
+    component.child && component.child.map(v=>print(v, indent+'ㅡ'));
+};
 //Usage
 const root = new Folder("Root");
 const movie = new Folder('Movie');
@@ -82,8 +98,10 @@ movie.add(new File('Taitanic'));
 music.add(new File("Shape of You"));
 music.add(new File("Billie Jean"));
 
-console.log(root.explore());
-console.log(root.search('Taitanic'));
+log('Exploring', 'blue');
+print(root.explore());
+log('Searching', 'blue');
+print(root.search('Taitanic'));
 
 /** Explaination
  * 계층 구조에서 동일한 인터페이스를 구현하여 각 객체마다 재귀적으로 자신의 일을 각자 처리하도록 하는 패턴.

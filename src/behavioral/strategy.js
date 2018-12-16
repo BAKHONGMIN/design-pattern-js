@@ -1,5 +1,5 @@
 import utils from '../utils/index';
-const {log: {e}, checker:{is}} = utils;
+const {log: {e, log}, checker:{is}} = utils;
 
 /**Assuming
  * 케릭터가 무기를 장착하고 공격한다.
@@ -20,6 +20,7 @@ class Character {
     }
     isAttackPossible(){
         //something here..
+        return true;
     }
 }
 
@@ -27,13 +28,13 @@ class Weapon {
     attack(){e('must be override.');}
 }
 class Hands extends Weapon {
-    attack(){console.log('손으로 공격');}
+    attack(){log('Attack by hand');}
 }
 class Spear extends Weapon {
-    attack(){console.log('창으로 공격');}
+    attack(){log('Attack by spear');}
 }
 class Gun extends Weapon {
-    attack(){console.log('총으로 공격');}
+    attack(){log('Attack by gun');}
 }
 
 //Usage

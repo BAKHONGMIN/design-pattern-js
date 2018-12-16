@@ -1,10 +1,21 @@
 import utils from '../utils/index';
-const {log: {e}, checker:{is}} = utils;
+const {log: {e, log}, checker:{is}} = utils;
 
 /**Assuming
- * composit pattern에 visitor pattern를 접목 시키기 때문에 먼저 composit pattern를 보고 와야 함.
- * 폴더와 파일의 중첩된 구조에서 
+ * composit pattern에 visitor pattern를 접목 시키기 때문에 먼저 composit pattern를 학습하고 오면좋다.
+ * 중첩된 폴더와 파일 구조가 있고 검색 기능을 구현한 explorer가 있다.
+ * -Root
+ *      -Music
+ *          -Shape of You
+ *          -Billie Jean
+ *          -Pop
+ *              -Mamma Mia
+ *      -Muvie
+ *          -TaiTanic
+ *          -Mamma Mia
  */
+
+//Visitor used for nested structure
 class HierarchicalVisitor {
     constructor(){
         this._stack = [];
@@ -45,7 +56,7 @@ class WinExplorer extends HierarchicalVisitor {
 }
 
 
-
+//Abstraction Class of Folder and File
 class Component {
     constructor(name, type) {
         this._name = name;
@@ -99,6 +110,12 @@ class File extends Component {
     }
 }
 
+//logger
+const print = (component, indent='') => {
+    log(`${indent}${component.type}: ${component.name}`);
+    component.child && component.child.map(v=>print(v, indent+'ㅡ'));
+};
+
 //Usage
 Component.accept(WinExplorer);
 const root = new Folder('Root');
@@ -106,10 +123,11 @@ const movie = new Folder('Movie');
 const music = new Folder('Music');
 const pop = new Folder('Pop');
 root.add(movie).add(music);
-movie.add(new File('Taitanic')).add(new File('love'));
+movie.add(new File('Taitanic')).add(new File('Mamma Mia'));
 music.add(new File('Shape of You')).add(new File('Billie Jean')).add(pop);
-pop.add(new File('love'));
-console.log(root.search('Shape of You'));
+pop.add(new File('Mamma Mia'));
+
+print(root.search('Mamma Mia'));
 
 /** Explaination
  * 객체에서 변화율이 높은 처리 코드를 격리 시킴.

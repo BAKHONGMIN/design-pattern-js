@@ -1,20 +1,26 @@
 import utils from '../utils/index';
-const {log: {e}, checker:{is}} = utils;
+const {log: {e, log}, checker:{is}} = utils;
 
 /**Assuming
  * url를 로깅하고 param을 파싱하는 middleware를 구현한다.
  * 함수형의 middleware signature next => req => {}
+ * 객체형은 next 메소드을 통해 decorator한다.
  */
 
 
  //-----------------함수형--------------------
-const logger = next => req => {console.log(req); next(req);};
+const logger = next => req => {
+    log('logged by logger');
+    next(req);
+};
 const paramParser = next => req => {
     req.url.split('?')[1].split('&').reduce((param, v) => {
         const splited = v.split('=');
         param[splited[0]] = splited[1];
         return param;
     }, req.param);
+    log('req is parsed by paramParser', 'blue');
+    log(req);
     next(req);
 };
 
@@ -49,7 +55,7 @@ function Request(url) {Object.assign(this,{param:{}, url});}
 const app = new App();
 app.useMiddleware(paramParser, logger);
 app.get('decorator', (req)=>{
-    console.log('receive decorator request', req.param);
+    log('receive decorator request');
 });
 
 app.request('http://localhost/decorator?name=kgc&email=kgc1753@naver.com');
