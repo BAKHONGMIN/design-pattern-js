@@ -1,4 +1,4 @@
-## Design Pattern with Javascript
+## Design Pattern with Javascript(es6)
 각 패턴에 대한 견해는 틀린 부분이 있을 수 있습니다. <br/>
 이하 패턴 설명 부분은 소스 코드 설명에서 일부 발췌한 부분으로 소스 코드 파일에 더욱 자세한 설명이 기술되어 있습니다.
 
