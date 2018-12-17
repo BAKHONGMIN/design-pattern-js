@@ -45,7 +45,7 @@ human.attack();
 human.setWeapon(new Gun());
 human.attack();
 
-/** Explaination
+/** Explanation
  * 변화되는 부분을 외부에서 전략객체를 받아서 사용한다.
  * attack의 경우 캐릭터가 공격 가능한지에 대한 알고리즘은 변경될 일이 거의 없는 반면에 무기에 대한 로직은 아이템에 따라 매번 변한다. 그래서 외부에서 전략 객체를 받아 해당 로직을 위임하여 변화를 격리 시킨다.
  * 

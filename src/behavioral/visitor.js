@@ -129,7 +129,7 @@ pop.add(new File('Mamma Mia'));
 
 print(root.search('Mamma Mia'));
 
-/** Explaination
+/** Explanation
  * 객체에서 변화율이 높은 처리 코드를 격리 시킴.
  * 컴포짓 패턴의 구조에서 처리코드를 격리하기 위해 visitor를 사용 할 수 있다. 
  * 

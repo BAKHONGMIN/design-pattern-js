@@ -103,7 +103,7 @@ print(root.explore());
 log('Searching', 'blue');
 print(root.search('Taitanic'));
 
-/** Explaination
+/** Explanation
  * 계층 구조에서 동일한 인터페이스를 구현하여 각 객체마다 재귀적으로 자신의 일을 각자 처리하도록 하는 패턴.
  * 계층 별 구조를 정의 했다면 각 계층에서 처리할 알고리즘 부분을 visitor를 이용하여 격리시킴.
 */

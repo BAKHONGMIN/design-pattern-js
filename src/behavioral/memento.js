@@ -64,7 +64,7 @@ const restoredTask = new Task().resotre(store);
 log('Restored Info', 'blue');
 restoredTask.getInfo();
 
-/** Explaination
+/** Explanation
  * memento 패턴은 자신의 상태값을 저장하고 복원하는 방식을 일컫는다.
  * 이 패턴은 대게 혼자 쓰이지 않고 command패턴과 같이 쓰인다. command패턴에서 각 command를 execute한후 undo할때 쓰이기 좋다.
 */

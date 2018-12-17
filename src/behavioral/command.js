@@ -145,7 +145,7 @@ app.undo();
 log('Undo remove command', 'blue');
 studying.getInfo();
 
-/** Explaination
+/** Explanation
  * 기능을 객체화 시키는 패턴이다. 기능을 객체화 시키면 값으로써 저장할 수 있기에 undo가 가능하고 또한 외부에서 구현된 객체로 받아서 사용할 수도 있다.
  * command객체를 이용하여 변화 빈도가 높은 기능 코드를 외부로 격시시켰기 때문에 Task객체는 변화에 닫혀있다. 즉 Task는 command도 모르고 app도 모른다.
  * 어느 객체에도 의존성이 없기 때문에 안전한 코드이다. 변화는 자기 자신안에서만 일어나기 때문이다.

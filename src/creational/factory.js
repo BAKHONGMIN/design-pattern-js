@@ -9,10 +9,10 @@ const {log: {e, log}, checker:{is, staticIs}} = utils;
 class Element{appendChild(){}}
 class Button{}
 class TextArea{}
-const WinButton=class extends Button{constructor(){super();log('create winbutton')}};
-const WinTextArea=class extends TextArea{constructor(){super();log('create wintextarea')}};
-const MacButton=class extends Button{constructor(){super();log('create macbutton')}};
-const MacTextArea=class extends TextArea{constructor(){super();log('create mactextarea')}};
+const WinButton=class extends Button{constructor(){super();log('create winbutton');}};
+const WinTextArea=class extends TextArea{constructor(){super();log('create wintextarea');}};
+const MacButton=class extends Button{constructor(){super();log('create macbutton');}};
+const MacTextArea=class extends TextArea{constructor(){super();log('create mactextarea');}};
 
 //------------simple factory----------------
 class ButtonDirectory extends Array {
@@ -86,7 +86,7 @@ log(new WinShadowingBox().draw());
 }
 
 
-/** Explaination
+/** Explanation
  * factory pattern
  * 객체의 생성코드를 캡슐화 하는데 목적을 둔다.
  * 

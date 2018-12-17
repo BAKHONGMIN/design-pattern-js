@@ -64,7 +64,7 @@ const app = new BankApp(new Account(), display);
 app.print();
 app.deposit(1000);
 
-/** Explaination
+/** Explanation
  * model이 변했다고 model 자신이 화면을 바꾸면 안된다. 그건 mvc에서 model의 역할과 권한을 넘는 것이다.
  * model은 단순히 데이터 변화를 controller에게 알리기만 하면 된다.
  * controller는 model에게 데이터를 전달한 후 바로 view에게 그리는 명령을 내리면 안된다. model이 데이터를 안전하게 저장되었는지 확인 후 view에게 명령을 내려야 한다.

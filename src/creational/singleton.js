@@ -35,7 +35,7 @@ const {log: {e, log}} = utils;
     log(p1 === p2);
 }
 
-/** Explaination
+/** Explanation
  * 제 3자가 사용하기에 싱글톤 객체를 new 연산을 통해 가져오는 건 어색함이 있음. 이름에 singleton를 매번 붙일수도 없는 노릇이기에
  * 자유변수와 symbol를 이용하여 외부에서 new 연산을 통한 생성을 금지하였음.
 */
